@@ -1,0 +1,33 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Enregister un plat{% endblock %}
+
+{% block PageTitle %}Nouveau plat{% endblock %}
+
+{% block body %}
+
+
+{{ form_start(form) }}
+<div class="row">
+
+<div class="col-6">{{ form_row(form.title) }}</div>
+<div class="col-6"> {{ form_row(form.description) }} </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-6">{{ form_row(form.prix) }}</div>
+<div class="col-6">{{ form_row(form.image) }}</div>
+
+</div>
+
+
+
+{{ form_rest(form) }}
+
+<a href="{{path('admin_plat.liste')}}">Listes des plats</a>
+{% endblock %}
+
+
+

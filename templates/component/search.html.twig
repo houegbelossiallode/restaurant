@@ -1,0 +1,58 @@
+{{ form_start(form) }}
+<div class="input-group">
+  <div class="form-outline" data-mdb-input-init>
+<div> {{ form_widget(form.rechercher) }} </div>
+   
+  </div>
+  <button id="search-button" type="submit" class="btn btn-primary">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+{{ form_rest(form) }}
+
+
+{% if app.request.method == 'POST' %}
+<form class="form-horizontal">
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-highlight">
+                    <thead>
+                        <tr>
+                                 
+                            <th>Plat</th>
+                            <th>Prix</th>
+                            <th>Description</th>
+                            <th>Catégorie</th>
+                                
+                        </tr>
+                    </thead>
+                    
+                        
+                    <tbody>
+                        {% if donnees |length == 0 %}
+                    <h1>Aucun resultats pour la recherche</h1>
+                        {% else %}
+                        <h1>Résultats de la recherche</h1>
+                        {% for donnee in donnees %}
+                            <tr>
+                                
+                                <td>{{ donnee.title }}</td>
+                                <td>{{ donnee.prix }}</td>
+                                <td>{{ donnee.description }}</td>
+                                <td>{{ donnee.categorie.description }}</td>
+                                <td>
+                                    
+                                    
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                            
+                            
+                        {% endif %}
+                    </tbody>
+                
+                </table>
+            
+        </div>
+    </form>
+{% endif %}

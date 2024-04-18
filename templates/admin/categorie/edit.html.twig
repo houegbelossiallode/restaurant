@@ -1,0 +1,33 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+
+{% block PageTitle %}Nouvelle Catégorie{% endblock %}
+
+{% block body %}
+
+<form class="form-horizontal" method="post" action="{{ path('admin_edit_categorie', { 'id': categorie }) }}">
+{{ form_start(form) }}
+<div class="row">
+
+<div class="col-12"> {{ form_row(form.description) }} </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-12">{{ form_row(form.parent,{'label': 'Categorie'}) }}</div>
+
+
+</div>
+
+
+
+{{ form_rest(form) }}
+
+<a href="{{path('admin_app_categorie')}}">Listes des catégories</a>
+{% endblock %}
+
+
+

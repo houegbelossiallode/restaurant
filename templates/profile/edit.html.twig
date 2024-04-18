@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'un Plat{% endblock %}
+
+
+
+{% block body %}
+
+<form class="form-horizontal" method="post" action="{{ path('profile.edit', { 'id': user }) }}">
+
+{{ form_start(form) }}
+<div class="row">
+
+<div class="col-6">{{ form_row(form.nom) }}</div>
+<div class="col-6"> {{ form_row(form.prenom) }} </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-12">{{ form_row(form.email) }}</div>
+
+
+</div>
+
+
+{{ form_rest(form) }}
+<button type="submit" class="btn btn-success">MODIFIER</button>
+</form>
+
+{% endblock %}

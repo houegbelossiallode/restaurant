@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrdersController!{% endblock %}
+
+{% block body %}
+
+
+<div class="ps-section__content">
+<div class="table-responsive">
+    <table class="table ps-table table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th>Commande n° </th>
+                <th>Référence</th>
+                <th>Date de la commande</th>
+                <th>Voir détails</th>
+                <th>Supprimer</th>
+                <th>Imprimer facture</th>
+                
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                
+            
+            <tr>
+                <td> {{order.id}} </td>
+                <td> {{order.reference|upper}} </td>
+                
+                <td> {{order.createdAt|date("d/m/Y")}} </td>
+                
+                <td>
+                    <div class="text-center"><a href="{{ path('app_orders_details', {id: order.id}   )}}" class="btn btn-warning"><i class="fa fa-eye"></i> </a></div>
+                        
+                </td>
+                <td>
+                <div class="text-center"><a href="{{ path('app_delete', {id: order.id}   )}}" class="btn btn-danger  "><i class="fa fa-trash"></i> </a></div>
+                    
+            </td>
+                <td>
+                <div class="text-center"><a href="" class="btn btn-warning">imprimer</a></div>    
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}
+
+
+

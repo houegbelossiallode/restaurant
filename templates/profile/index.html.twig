@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profile{% endblock %}
+
+{% block body %}
+
+<div class="ps-section__content">
+<div class="table-responsive">
+    <table class="table ps-table">
+    <thead>
+    <tr>
+    
+    
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+    <th>Action</th>
+    </tr>
+    
+    </thead>
+
+
+<tbody>
+{% for profile in profiles %}
+    
+    <tr>
+    <td> {{profile.nom}} </td>
+    <td> {{profile.prenom}} </td>
+    <td> {{profile.email}} </td>
+    
+    
+    <td>
+    <a href="{{ path('profile.edit', {id: profile.id})}}" class="btn btn-primary">MODIFIER</a>
+    </td>
+    
+
+    </tr>
+
+    {% endfor %}
+</tbody>
+
+
+</table>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+
+
+
+<div class="ps-section__content">
+<div class="table-responsive">
+    <table class="table ps-table">
+        <thead>
+            <tr>
+                <th>Commande n° </th>
+                <th>Référence</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de la commande</th>
+                
+               
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                
+            
+            <tr>
+                <td> {{order.id}} </td>
+                <td> {{order.reference}} </td>
+                <td> {{order.users.nom}} </td>
+                <td> {{order.users.prenom}} </td>
+                <td> {{order.createdAt|date("d/m/Y")}} </td>
+                <td>  </td>
+                <td></td>
+                <td>
+                    <div>
+                        <div><a href="{{ path('app_orders_details', {id: order.id}   )}}" class="btn btn-warning"><i class="fa fa-eye"></i> </a></div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+
+

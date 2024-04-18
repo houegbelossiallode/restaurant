@@ -1,0 +1,41 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+ {% block PageTitle %}Liste des catégories{% endblock %}
+{% block body %}
+
+<a href="{{ path('admin_add_categorie') }}" class="btn btn-success mb-2">Ajouter une nouvelle catégorie</a>
+<form class="form-horizontal">
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-highlight">
+                    <thead>
+                        <tr>
+                            
+                            <th>Description</th>
+                            <th>Catégorie</th>
+                            <th>Actions 1</th>
+                            <th>Actions 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categorie in categories %}
+                            <tr>
+                                <td>{{ categorie.description }}</td>
+                                <td>{{ categorie.parent }}</td>
+                             
+                                
+                                
+                                <td>
+                                    <a href="{{path('admin_edit_categorie',{id : categorie.id})}}" class="btn btn-success">Modifier</a>
+                                </td>
+                                <td>
+                                <a href="{{ path('admin_categorie.delete', {id : categorie.id}   )}}  " class="btn btn-danger" >REMOVE</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+
+{% block body %}
+
+    <main class="container">
+        <section class="row">
+            <div class="col-sm-6">
+                <h1>Panier</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Plat</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for element in data %}
+                            <tr>
+                                <td>{{ element.plat.title }}</td>
+                                <td>{{ element.plat.prix / 100 }} €</td>
+                                <td>{{ element.quantity }}</td>
+                                <td>{{ element.quantity * element.plat.prix }} €</td>
+                                <td>
+                                <a href="{{ path('cart_add', {id: element.plat.id}) }}" class="btn btn-success"><i class="fa fa-plus"></i></a>
+                                <a href="{{ path('remove', {id: element.plat.id}) }}" class="btn btn-warning"><i class="fa-solid fa-window-minimize"></i></a>
+                                <a href="{{ path('delete', {id: element.plat.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                               </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Votre panier est vide</td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Total :</td>
+                            <td>{{ total }} €</td>
+                            <td>
+                                <a href="{{ path('empty') }}" class="btn btn-danger">Vider</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <a href="{{path('commander')}}" class="btn btn-primary">Valider mon Panier</a>
+            <a href="{{path('app_home')}}" class="btn btn-success">Ajouter un autre plat</a>
+            </div>
+
+
+        </section>
+    </main>
+
+     <form action="{{path('payer')}}" method="POST">
+     <input type="hidden" name="field" value="test">
+    <script
+      src="https://checkout.fedapay.com/js/checkout.js"
+      data-public-key="pk_live_0fkRnnMTf5EfPGbD8eP8SPx6"
+      data-button-text="commander"
+      data-button-class="btn btn-primary"
+      data-transaction-amount="{{ total }}"
+      data-transaction-description="Payer à restaurant la food"
+      data-currency-iso="XOF"
+      data-widget-description="Votre boutique 100% africaine"
+      data-widget-image="https://live-checkout.fedapay.com/img/marketplace.svg"
+      data-widget-title="Restaurant la Food">
+    </script>
+    
+    
+
+   </form>
+
+
+  
+
+{% endblock %}

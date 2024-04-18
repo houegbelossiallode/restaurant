@@ -1,0 +1,33 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Contact{% endblock %}
+ {% block PageTitle %}Liste des Contacts{% endblock %}
+{% block body %}
+<form class="form-horizontal">
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-highlight">
+                    <thead>
+                        <tr>
+                          
+                            <th>Sujet</th>
+                            <th>Email</th>
+                            <th>Messages</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contacts %}
+                            <tr>
+                                
+                                <td>{{ contact.sujet }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.message }}</td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+        </div>
+    </form>
+{% endblock %}

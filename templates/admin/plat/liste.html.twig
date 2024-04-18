@@ -1,0 +1,45 @@
+{% extends "template.html.twig" %}
+{% block title %}plat{% endblock %}
+{% block PageTitle %}Liste des plats{% endblock %}
+{% block body %}
+
+
+
+<a href="{{ path('admin_add_plat') }}" class="btn btn-success mb-2">Créer un nouveau Plat</a>
+
+<form class="form-horizontal">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-highlight">
+      <thead>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Action1</th>
+      <th>Action2</th>
+      </thead>
+      <tbody>
+        {% for plat in plats %}
+        <tr>
+        <td>{{loop.index}}</td>
+        <td> <img src="{{asset('uploads/plats/'~ plat.image)}}" alt="" width="60%"> </td>
+        <td> {{plat.title}} </td>
+        <td> {{plat.description}} </td>
+        <td> {{plat.prix}} </td>
+
+            <td>
+            <a href="{{ path('admin_plat.edit', {id: plat.id}   )}}" class="btn btn-primary">EDIT</a>
+            </td>
+            <td>
+            <a href="{{ path('admin_plat.delete', {id : plat.id}   )}}  " class="btn btn-danger" >REMOVE</a>
+            </td>
+            
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<div class="ps-section__content">
+<div class="table-responsive">
+    <table class="table ps-table table table-bordered border-primary">
+        <thead>
+            <tr>
+                
+                <th>Plat</th>
+                <th>Quantity</th>
+                <th>Prix</th>
+                <th>Catégorie</th>
+                <th>Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+                
+            
+            <tr>
+                
+                <td> {{commande.plat.title}} </td>
+                <td> {{commande.quantity}} </td>
+                <td> {{commande.price}} </td>
+                <td> {{commande.plat.categorie}} </td>
+                <td> 
+                    
+                    {% if commande.statut == 0 %}
+                        {% set name = "Non Payé" %}
+                        {% set color = "danger" %}
+                    
+                    {% else %}
+                        {% set name = "Payé" %}
+                        {% set color = "success" %}
+                    {% endif %}
+                    <span class="badge bg-{{ color }}">{{ name }}</span>
+                    
+                
+                </td>
+                
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

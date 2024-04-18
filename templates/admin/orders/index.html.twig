@@ -1,0 +1,48 @@
+{% extends "template.html.twig" %}
+
+{% block title %}Commandes{% endblock %}
+ {% block PageTitle %}Liste des Comandes{% endblock %}
+{% block body %}
+<form class="form-horizontal">
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-highlight">
+                    <thead>
+                        <tr>
+                          
+                        <th>Commande N°</th>
+                        <th>Nom</th>  
+                        <th>Prénom</th>
+                        <th>Plat</th>
+                        <th>Quantity</th>
+                        <th>Prix</th>
+                        <th>Date</th>
+                        <th>Référence</th>
+                        <th>Status</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for commande in commandes %}
+                            <tr>
+                            
+                                <td>{{ commande.orders.id }}</td>
+                                <td>{{ commande.orders.users.nom }}</td>
+                                <td>{{ commande.orders.users.prenom }}</td>
+                                <td>{{ commande.plat.title }}</td>
+                                <td>{{ commande.quantity }}</td>
+                                <td>{{ commande.price }}</td>
+                                <td>{{ commande.orders.createdAt|date("d/m/Y H:s") }}</td>
+                                <td>{{ commande.orders.reference }}</td>
+                                
+                                    <td>
+                                    <a href="" class="btn btn-success">Valider</a>
+                                </td>
+                            
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+        </div>
+    </form>
+{% endblock %}

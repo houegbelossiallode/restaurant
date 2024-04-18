@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+
+<!-- book section -->
+<section class="book_section layout_padding">
+<div class="container">
+  <div class="heading_container">
+    <h2>
+      Notre formulaire de Contact-Nous
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form_container">
+      {{ form_start(form) }}
+    <div class="row">
+
+    <div class="col-6">{{ form_row(form.sujet) }}</div>
+    <div class="col-6"> {{ form_row(form.email) }} </div>
+
+    </div>
+
+    <div class="row">
+
+    <div class="col-12">{{ form_row(form.message) }}</div>
+    
+    </div>
+
+
+{{ form_rest(form) }}
+
+
+      <div class="btn_box">
+        <button>
+          Contact-Nous
+        </button>
+      </div>
+    </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="map_container ">
+        <div id="googleMap"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- end book section -->
+
+
+{% endblock %}
